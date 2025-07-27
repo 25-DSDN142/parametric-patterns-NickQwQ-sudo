@@ -29,10 +29,9 @@ function my_symbol() { // do not rename this function. Treat this similarly to a
   rect(40 ,40, rect_width, rect_height);
 }
 
-// Parameters
-let petalColor = '#67b7d1';
-let innerColor = '#f5c542';
-let strokeColor = '#000000';
+
+// 基礎圖樣色彩參數
+let baseColors = ['#d65eff', '#62f4ff', '#ffffff'];
 
 function setup_wallpaper(pWallpaper) {
   pWallpaper.output_mode(DEVELOP_GLYPH);
@@ -40,46 +39,36 @@ function setup_wallpaper(pWallpaper) {
   pWallpaper.resolution(FIT_TO_SCREEN);
   pWallpaper.show_guide(true);
 
-  pWallpaper.grid_settings.cell_width = 200;
-  pWallpaper.grid_settings.cell_height = 200;
+  pWallpaper.grid_settings.cell_width = 120;
+  pWallpaper.grid_settings.cell_height = 120;
   pWallpaper.grid_settings.row_offset = 0;
 }
 
 function wallpaper_background() {
-  background('#e1f5fe');
+  background('#ffffff');
 }
 
 function my_symbol() {
-  angleMode(DEGREES); 
-
+  noStroke();
   push();
-  translate(100, 100); 
-
-  let petalCount = 16;
-  let angleStep = 360 / petalCount;
-
-  for (let i = 0; i < petalCount; i++) {
-    push();
-    rotate(i * angleStep);
-    drawPetal(35);
-    pop();
-  }
-
+  translate(60, 60); // 置中
+  drawPixelBlock();
   pop();
 }
 
-function drawPetal(radius) {
-  stroke(strokeColor);
-  strokeWeight(1.2);
-  fill(petalColor);
+function drawPixelBlock() {
+  let unit = 4; // 單位像素格大小
+  let size = 15; // 格子寬高（像素格數）
 
-  beginShape();
-  vertex(radius, 0);
-  bezierVertex(radius + 8, -10, radius + 20, -10, radius + 30, 0);
-  bezierVertex(radius + 20, 10, radius + 8, 10, radius, 0);
-  endShape(CLOSE);
+  for (let x = -size; x <= size; x++) {
+    for (let y = -size; y <= size; y++) {
+      let d = dist(x, y, 0, 0);
 
-  fill(innerColor);
-  noStroke();
-  ellipse(radius + 15, 0, 8, 8);
+      if (d < size && (x + y) % 2 === 0) {
+        let index = floor(noise(x * 0.3, y * 0.3) * baseColors.length);
+        fill(baseColors[index]);
+        rect(x * unit, y * unit, unit, unit);
+      }
+    }
+  }
 }
