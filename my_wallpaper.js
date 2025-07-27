@@ -65,10 +65,10 @@ function drawFlower(x, y, size, petals, color1, color2) {
     push();
     rotate(angle);
 
-    let grad = drawingContext.createLinearGradient(0, -size * 0.6, 0, size * 0.1);
-    grad.addColorStop(0, color1.toString());
-    grad.addColorStop(1, color2.toString());
-    drawingContext.fillStyle = grad;
+    let grad1 = drawingContext.createLinearGradient(0, -size * 0.6, 0, size * 0.1);
+    grad1.addColorStop(0, color1.toString());
+    grad1.addColorStop(1, color2.toString());
+    drawingContext.fillStyle = grad1;
 
     beginShape();
     vertex(0, 0);
@@ -98,12 +98,31 @@ function drawFlower(x, y, size, petals, color1, color2) {
   }
 
   
-  noStroke();
+  for (let i = 0; i < petals + 6; i++) {
+    let angle = (360 / (petals + 6)) * i;
+    push();
+    rotate(angle);
+
+    let grad3 = drawingContext.createLinearGradient(0, -size * 0.4, 0, size * 0.05);
+    grad3.addColorStop(0, color("#ff99aa").toString());
+    grad3.addColorStop(1, color("#ffcc33").toString());
+    drawingContext.fillStyle = grad3;
+
+    beginShape();
+    vertex(0, 0);
+    bezierVertex(-size * 0.07, -size * 0.1, -size * 0.07, -size * 0.3, 0, -size * 0.5);
+    bezierVertex(size * 0.07, -size * 0.3, size * 0.07, -size * 0.1, 0, 0);
+    endShape(CLOSE);
+    pop();
+  }
+
+  
   fill(lerpColor(color1, color2, 0.5));
-  circle(0, 0, size * 0.25);
+  circle(0, 0, size * 0.2);
 
   pop();
 }
+
 
 
 
