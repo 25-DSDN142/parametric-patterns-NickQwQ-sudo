@@ -75,6 +75,13 @@ function drawFlower(x, y, size, petals, color1, color2) {
     bezierVertex(-size * 0.15, -size * 0.3, -size * 0.15, -size * 0.7, 0, -size);
     bezierVertex(size * 0.15, -size * 0.7, size * 0.15, -size * 0.3, 0, 0);
     endShape(CLOSE);
+
+    
+    stroke(255, 80);
+    strokeWeight(1);
+    line(0, -size * 0.8, 0, -size * 1.05);
+    line(-size * 0.05, -size * 0.9, size * 0.05, -size * 0.9);
+    noStroke();
     pop();
   }
 
@@ -117,11 +124,25 @@ function drawFlower(x, y, size, petals, color1, color2) {
   }
 
   
+  for (let i = 0; i < petals + 6; i++) {
+    let angle = (360 / (petals + 6)) * i + 15;
+    push();
+    rotate(angle);
+
+    stroke("#ffdd88");
+    strokeWeight(0.7);
+    line(0, 0, 0, -size * 0.3);
+    pop();
+  }
+
+  
+  noStroke();
   fill(lerpColor(color1, color2, 0.5));
   circle(0, 0, size * 0.2);
 
   pop();
 }
+
 
 
 
