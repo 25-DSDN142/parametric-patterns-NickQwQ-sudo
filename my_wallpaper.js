@@ -29,7 +29,8 @@ function my_symbol() { // do not rename this function. Treat this similarly to a
   rect(40 ,40, rect_width, rect_height);
 }
 
-// 
+
+// Parameters
 let petalColor = '#67b7d1';
 let innerColor = '#f5c542';
 let strokeColor = '#000000';
@@ -54,28 +55,38 @@ function my_symbol() {
   push();
   translate(100, 100); 
 
+  
   for (let i = 0; i < 8; i++) {
     push();
     rotate(i * 45);
-    drawPetal();
+    drawPetal(40); // 半徑 40
+    pop();
+  }
+
+  
+  for (let i = 0; i < 12; i++) {
+    push();
+    rotate(i * 30);
+    drawPetal(70); 
     pop();
   }
 
   pop();
 }
 
-function drawPetal() {
+function drawPetal(radius) {
   stroke(strokeColor);
   strokeWeight(1.5);
   fill(petalColor);
+
   beginShape();
-  vertex(0, 0);
-  bezierVertex(10, -20, 30, -20, 40, 0);
-  bezierVertex(30, 20, 10, 20, 0, 0);
+  vertex(radius, 0);
+  bezierVertex(radius + 10, -20, radius + 30, -20, radius + 40, 0);
+  bezierVertex(radius + 30, 20, radius + 10, 20, radius, 0);
   endShape(CLOSE);
 
   fill(innerColor);
-  ellipse(20, 0, 10, 10); 
+  ellipse(radius + 20, 0, 10, 10); // 中心裝飾圓
 }
 
 
