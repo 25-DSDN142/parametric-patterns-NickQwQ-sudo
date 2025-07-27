@@ -29,53 +29,55 @@ function my_symbol() { // do not rename this function. Treat this similarly to a
   rect(40 ,40, rect_width, rect_height);
 }
 
-// Parameters 
-let motifSize = 120;
-let colors = ['#f25f5c', '#247ba0', '#70c1b3', '#ffe066']; 
+// 
+let petalColor = '#67b7d1';
+let innerColor = '#f5c542';
+let strokeColor = '#000000';
 
 function setup_wallpaper(pWallpaper) {
   pWallpaper.output_mode(DEVELOP_GLYPH); 
   //pWallpaper.output_mode(GRID_WALLPAPER); 
 
   pWallpaper.resolution(FIT_TO_SCREEN);
-  pWallpaper.show_guide(true); 
+  pWallpaper.show_guide(true);
 
-  pWallpaper.grid_settings.cell_width  = 200;
+  pWallpaper.grid_settings.cell_width = 200;
   pWallpaper.grid_settings.cell_height = 200;
-  pWallpaper.grid_settings.row_offset  = 50;
+  pWallpaper.grid_settings.row_offset = 0;
 }
 
 function wallpaper_background() {
-  background('#f6f1e9'); 
+  background('#e1f5fe'); 
 }
 
 function my_symbol() {
   push();
   translate(100, 100); 
-  rotate(45); 
 
- 
-  drawRhombusPart(-30, 0, colors[0]); 
-  drawRhombusPart(30, 0, colors[1]);  
-  drawRhombusPart(0, -30, colors[2]); 
-  drawRhombusPart(0, 30, colors[3]);  
+  for (let i = 0; i < 8; i++) {
+    push();
+    rotate(i * 45);
+    drawPetal();
+    pop();
+  }
 
   pop();
 }
 
-function drawRhombusPart(x, y, col) {
-  push();
-  translate(x, y);
-  fill(col);
-  noStroke();
+function drawPetal() {
+  stroke(strokeColor);
+  strokeWeight(1.5);
+  fill(petalColor);
   beginShape();
-  vertex(-30, -60);
-  vertex(30, -60);
-  vertex(60, 60);
-  vertex(0, 60);
+  vertex(0, 0);
+  bezierVertex(10, -20, 30, -20, 40, 0);
+  bezierVertex(30, 20, 10, 20, 0, 0);
   endShape(CLOSE);
-  pop();
+
+  fill(innerColor);
+  ellipse(20, 0, 10, 10); 
 }
+
 
 
 
