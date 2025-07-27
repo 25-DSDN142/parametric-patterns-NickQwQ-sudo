@@ -30,7 +30,7 @@ function my_symbol() { // do not rename this function. Treat this similarly to a
 }
 
 
-// 基礎圖樣色彩參數
+
 let baseColors = ['#d65eff', '#62f4ff', '#ffffff'];
 
 function setup_wallpaper(pWallpaper) {
@@ -51,14 +51,14 @@ function wallpaper_background() {
 function my_symbol() {
   noStroke();
   push();
-  translate(60, 60); // 置中
+  translate(60, 60); 
   drawPixelBlock();
   pop();
 }
 
 function drawPixelBlock() {
-  let unit = 4; // 單位像素格大小
-  let size = 15; // 格子寬高（像素格數）
+  let unit = 4; 
+  let size = 15; 
 
   for (let x = -size; x <= size; x++) {
     for (let y = -size; y <= size; y++) {
