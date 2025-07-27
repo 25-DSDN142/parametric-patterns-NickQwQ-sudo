@@ -59,7 +59,28 @@ function drawFlower(x, y, size, petals, color1, color2) {
   translate(x, y);
   noStroke();
 
-  
+    
+  for (let i = 0; i < 24; i++) {
+    let angle = (360 / 24) * i;
+    push();
+    rotate(angle);
+
+    let grad0 = drawingContext.createLinearGradient(0, -size * 0.9, 0, size * 0.2);
+    grad0.addColorStop(0, color("#330066").toString()); // 深紫
+    grad0.addColorStop(1, color("#000000").toString()); // 黑
+    drawingContext.fillStyle = grad0;
+
+    beginShape();
+    vertex(0, 0);
+    bezierVertex(-size * 0.2, -size * 0.4, -size * 0.2, -size * 1.0, 0, -size * 1.2);
+    bezierVertex(size * 0.2, -size * 1.0, size * 0.2, -size * 0.4, 0, 0);
+    endShape(CLOSE);
+
+    pop();
+  }
+
+
+
   for (let i = 0; i < petals; i++) {
     let angle = (360 / petals) * i;
     push();
