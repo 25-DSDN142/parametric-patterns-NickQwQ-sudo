@@ -59,12 +59,12 @@ function drawFlower(x, y, size, petals, color1, color2) {
   translate(x, y);
   noStroke();
 
+  
   for (let i = 0; i < petals; i++) {
     let angle = (360 / petals) * i;
     push();
     rotate(angle);
 
-    
     let grad = drawingContext.createLinearGradient(0, -size * 0.6, 0, size * 0.1);
     grad.addColorStop(0, color1.toString());
     grad.addColorStop(1, color2.toString());
@@ -78,7 +78,32 @@ function drawFlower(x, y, size, petals, color1, color2) {
     pop();
   }
 
+  
+  for (let i = 0; i < petals; i++) {
+    let angle = (360 / petals) * i + 360 / (petals * 2);
+    push();
+    rotate(angle);
+
+    let grad2 = drawingContext.createLinearGradient(0, -size * 0.5, 0, size * 0.1);
+    grad2.addColorStop(0, color("#ff77ff").toString());
+    grad2.addColorStop(1, color("#5522aa").toString());
+    drawingContext.fillStyle = grad2;
+
+    beginShape();
+    vertex(0, 0);
+    bezierVertex(-size * 0.1, -size * 0.2, -size * 0.1, -size * 0.5, 0, -size * 0.7);
+    bezierVertex(size * 0.1, -size * 0.5, size * 0.1, -size * 0.2, 0, 0);
+    endShape(CLOSE);
+    pop();
+  }
+
+  
+  noStroke();
+  fill(lerpColor(color1, color2, 0.5));
+  circle(0, 0, size * 0.25);
+
   pop();
 }
+
 
 
