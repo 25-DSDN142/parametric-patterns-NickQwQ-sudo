@@ -29,16 +29,14 @@ function my_symbol() { // do not rename this function. Treat this similarly to a
   rect(40 ,40, rect_width, rect_height);
 }
 
-
 // Parameters
 let petalColor = '#67b7d1';
 let innerColor = '#f5c542';
 let strokeColor = '#000000';
 
 function setup_wallpaper(pWallpaper) {
-  pWallpaper.output_mode(DEVELOP_GLYPH); 
-  //pWallpaper.output_mode(GRID_WALLPAPER); 
-
+  pWallpaper.output_mode(DEVELOP_GLYPH);
+  // pWallpaper.output_mode(GRID_WALLPAPER);
   pWallpaper.resolution(FIT_TO_SCREEN);
   pWallpaper.show_guide(true);
 
@@ -48,26 +46,22 @@ function setup_wallpaper(pWallpaper) {
 }
 
 function wallpaper_background() {
-  background('#e1f5fe'); 
+  background('#e1f5fe');
 }
 
 function my_symbol() {
+  angleMode(DEGREES); 
+
   push();
   translate(100, 100); 
 
-  
-  for (let i = 0; i < 8; i++) {
-    push();
-    rotate(i * 45);
-    drawPetal(40); // 半徑 40
-    pop();
-  }
+  let petalCount = 16;
+  let angleStep = 360 / petalCount;
 
-  
-  for (let i = 0; i < 12; i++) {
+  for (let i = 0; i < petalCount; i++) {
     push();
-    rotate(i * 30);
-    drawPetal(70); 
+    rotate(i * angleStep);
+    drawPetal(35);
     pop();
   }
 
@@ -76,22 +70,16 @@ function my_symbol() {
 
 function drawPetal(radius) {
   stroke(strokeColor);
-  strokeWeight(1.5);
+  strokeWeight(1.2);
   fill(petalColor);
 
   beginShape();
   vertex(radius, 0);
-  bezierVertex(radius + 10, -20, radius + 30, -20, radius + 40, 0);
-  bezierVertex(radius + 30, 20, radius + 10, 20, radius, 0);
+  bezierVertex(radius + 8, -10, radius + 20, -10, radius + 30, 0);
+  bezierVertex(radius + 20, 10, radius + 8, 10, radius, 0);
   endShape(CLOSE);
 
   fill(innerColor);
-  ellipse(radius + 20, 0, 10, 10); // 中心裝飾圓
+  noStroke();
+  ellipse(radius + 15, 0, 8, 8);
 }
-
-
-
-
-
-
-
