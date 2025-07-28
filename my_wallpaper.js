@@ -59,15 +59,15 @@ function drawFlower(x, y, size, petals, color1, color2) {
   translate(x, y);
   noStroke();
 
-    
+   
   for (let i = 0; i < 36; i++) {
     let angle = (360 / 36) * i;
     push();
     rotate(angle);
 
     let grad7 = drawingContext.createLinearGradient(0, -size * 1.3, 0, size * 0.3);
-    grad7.addColorStop(0, color("#ffcc00").toString());  
-    grad7.addColorStop(1, color("#cc0066").toString());  
+    grad7.addColorStop(0, color("#ff9933").toString());  
+    grad7.addColorStop(1, color("#cc3300").toString());  
     drawingContext.fillStyle = grad7;
 
     beginShape();
