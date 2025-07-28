@@ -1,7 +1,7 @@
 //your parameter variables go here!
 let rect_width  = 100;
 let rect_height = 100;
-     
+    
     
 
 
@@ -60,6 +60,27 @@ function drawFlower(x, y, size, petals, color1, color2) {
   noStroke();
 
     
+  for (let i = 0; i < 36; i++) {
+    let angle = (360 / 36) * i;
+    push();
+    rotate(angle);
+
+    let grad7 = drawingContext.createLinearGradient(0, -size * 1.3, 0, size * 0.3);
+    grad7.addColorStop(0, color("#ffcc00").toString());  
+    grad7.addColorStop(1, color("#cc0066").toString());  
+    drawingContext.fillStyle = grad7;
+
+    beginShape();
+    vertex(0, 0);
+    bezierVertex(-size * 0.18, -size * 0.7, -size * 0.18, -size * 1.3, 0, -size * 1.65);
+    bezierVertex(size * 0.18, -size * 1.3, size * 0.18, -size * 0.7, 0, 0);
+    endShape(CLOSE);
+
+    pop();
+  }
+
+  
+
   for (let i = 0; i < 30; i++) {
     let angle = (360 / 30) * i;
     push();
@@ -165,7 +186,8 @@ function drawFlower(x, y, size, petals, color1, color2) {
   }
 
   
-  for (let i = 0; i < petals + 6; i++) {
+    
+   for (let i = 0; i < petals + 6; i++) {
     let angle = (360 / (petals + 6)) * i + 15;
     push();
     rotate(angle);
@@ -183,12 +205,6 @@ function drawFlower(x, y, size, petals, color1, color2) {
 
   pop();
 }
-
-
-
-
-
-
 
 
 
