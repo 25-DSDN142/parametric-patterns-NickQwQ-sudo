@@ -60,14 +60,34 @@ function drawFlower(x, y, size, petals, color1, color2) {
   noStroke();
 
     
+  for (let i = 0; i < 30; i++) {
+    let angle = (360 / 30) * i;
+    push();
+    rotate(angle);
+
+    let grad6 = drawingContext.createLinearGradient(0, -size * 1.2, 0, size * 0.3);
+    grad6.addColorStop(0, color("#22ffff").toString());  
+    grad6.addColorStop(1, color("#ff0066").toString());  
+    drawingContext.fillStyle = grad6;
+
+    beginShape();
+    vertex(0, 0);
+    bezierVertex(-size * 0.15, -size * 0.6, -size * 0.15, -size * 1.1, 0, -size * 1.4);
+    bezierVertex(size * 0.15, -size * 1.1, size * 0.15, -size * 0.6, 0, 0);
+    endShape(CLOSE);
+
+    pop();
+  }
+
+    
   for (let i = 0; i < 24; i++) {
     let angle = (360 / 24) * i;
     push();
     rotate(angle);
 
     let grad0 = drawingContext.createLinearGradient(0, -size * 0.9, 0, size * 0.2);
-    grad0.addColorStop(0, color("#330066").toString()); // 深紫
-    grad0.addColorStop(1, color("#000000").toString()); // 黑
+    grad0.addColorStop(0, color("#330066").toString()); 
+    grad0.addColorStop(1, color("#000000").toString()); 
     drawingContext.fillStyle = grad0;
 
     beginShape();
@@ -163,6 +183,10 @@ function drawFlower(x, y, size, petals, color1, color2) {
 
   pop();
 }
+
+
+
+
 
 
 
