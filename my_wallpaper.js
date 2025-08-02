@@ -174,7 +174,7 @@ function drawFlower(x, y, size, petals, color1, color2) {
     rotate(angle);
 
     let grad3 = drawingContext.createLinearGradient(0, -size * 0.4, 0, size * 0.05);
-    grad3.addColorStop(0, color("#ff99aa").toString());
+    grad3.addColorStop(0, color("#ff99aa").toString()); 
     grad3.addColorStop(1, color("#ffcc33").toString());
     drawingContext.fillStyle = grad3;
 
@@ -187,25 +187,23 @@ function drawFlower(x, y, size, petals, color1, color2) {
   }
 
   
-   // Middle 
-   for (let i = 0; i < petals + 6; i++) {
-    let angle = (360 / (petals + 6)) * i + 15;
-    push();
-    rotate(angle);
+ // Middle Star
+let starRadius1 = size * 0.1;
+let starRadius2 = size * 0.2;
+let points = 5;
 
-    stroke("#ffdd88");
-    strokeWeight(0.7);
-    line(0, 0, 0, -size * 0.3);
-    pop();
-  }
+fill(lerpColor(color1, color2, 0.5));
+noStroke();
+beginShape();
+for (let i = 0; i < points * 2; i++) {
+  let angle = i * PI / points;
+  let r = (i % 2 === 0) ? starRadius2 : starRadius1;
+  let x = cos(angle) * r;
+  let y = sin(angle) * r;
+  vertex(x, y);
+}
+endShape(CLOSE);
 
-  
-  noStroke();
-  fill(lerpColor(color1, color2, 0.5));
-  circle(0, 0, size * 0.2);
 
   pop();
 }
-
-
-
