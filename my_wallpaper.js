@@ -187,7 +187,7 @@ function drawFlower(x, y, size, petals, color1, color2) {
   }
 
   
- // Middle Star
+// Middle Star
 let starRadius1 = size * 0.1;
 let starRadius2 = size * 0.2;
 let points = 5;
@@ -196,13 +196,14 @@ fill(lerpColor(color1, color2, 0.5));
 noStroke();
 beginShape();
 for (let i = 0; i < points * 2; i++) {
-  let angle = i * PI / points;
+  let angle = i * 360 / (points * 2);
   let r = (i % 2 === 0) ? starRadius2 : starRadius1;
   let x = cos(angle) * r;
   let y = sin(angle) * r;
   vertex(x, y);
 }
 endShape(CLOSE);
+
 
 
   pop();
