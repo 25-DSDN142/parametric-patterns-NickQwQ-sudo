@@ -63,22 +63,22 @@ let center_star_points = 5;
 
 // Wallpaper setup function
 function setup_wallpaper(pWallpaper) {
-  pWallpaper.output_mode(DEVELOP_GLYPH);
+  pWallpaper.output_mode(GRID_WALLPAPER);
   pWallpaper.resolution(FIT_TO_SCREEN);
-  pWallpaper.show_guide(true);
+  pWallpaper.show_guide(false);
   pWallpaper.grid_settings.cell_width = 200;
   pWallpaper.grid_settings.cell_height = 200;
   pWallpaper.grid_settings.row_offset = 0;
 }
 
 function wallpaper_background() {
-  background(240, 255, 240);
+  background(220, 240, 255);
 }
 
 function my_symbol() {
   
   translate(200 / 2, 200 / 2);
-  drawFlower(0, 0, 60);
+  drawFlower(0, 0, 40);
 }
 
 // Draw each layer of the flower
@@ -144,4 +144,4 @@ function drawStar(x, y, r1, r2, npoints, fillCol) {
   }
   endShape(CLOSE);
 }
-//
+
