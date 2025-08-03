@@ -3,9 +3,9 @@ let rect_width = 100;
 let rect_height = 100;
 
 // Layer 7 - Orange and Red
-let layer7_count = 24; // Number of petals
-let layer7_color1 = "#ffc9a9"; // Gradient start color
-let layer7_color2 = "#ff9966"; // Gradient end color
+let layer7_count = 48; // Number of petals
+let layer7_color1 = "#003366"; // Gradient start color
+let layer7_color2 = "#00ccff"; // Gradient end color
 let layer7_widthFactor = 0.24; // Top peak height multiplier
 let layer7_heightTop = 0.7; // Middle control point
 let layer7_heightMid = 1.3; // Bottom control point
@@ -13,12 +13,12 @@ let layer7_heightBottom = 1.65; // Width factor
 
 // Layer 6 - Red and Dark Red
 let layer6_count = 30;
-let layer6_color1 = "#d1a3ff";
-let layer6_color2 = "#a3dfff";
+let layer6_color1 = "#99ccff";
+let layer6_color2 = "#cccccc";
 let layer6_widthFactor = 0.15;
-let layer6_heightTop = 0.6;
-let layer6_heightMid = 1.1;
-let layer6_heightBottom = 1.4;
+let layer6_heightTop = 0.5;
+let layer6_heightMid = 1.0;
+let layer6_heightBottom = 1.2;
 
 // Layer 5 - Dark Purple and Black
 let layer5_count = 24;
@@ -40,30 +40,30 @@ let layer4_heightBottom = 0.9;
 
 // Layer 3 - Purple and Dark Purple
 let layer3_count = 12;
-let layer3_color1 = "#ff77ff";
-let layer3_color2 = "#5522aa";
+let layer3_color1 = "#cc99ff";
+let layer3_color2 = "#330099";
 let layer3_widthFactor = 0.1;
-let layer3_heightTop = 0.1;
-let layer3_heightMid = 0.35;
-let layer3_heightBottom = 0.7;
+let layer3_heightTop = 0.3;
+let layer3_heightMid = 0.8;
+let layer3_heightBottom = 1.0;
 
 // Layer 2 - Pink and yellow
-let layer2_count = 30;
-let layer2_color1 = "#aaffee";
-let layer2_color2 = "#3399ff";
+let layer2_count = 20;
+let layer2_color1 = "#dddddd";
+let layer2_color2 = "#ffffff";
 let layer2_widthFactor = 0.07;
 let layer2_heightTop = 0.1;
 let layer2_heightMid = 0.3;
 let layer2_heightBottom = 0.5;
 
 // Middle Star
-let center_star_radius1 = 0.09;
-let center_star_radius2 = 0.16;
+let center_star_radius1 = 0.08;
+let center_star_radius2 = 0.15;
 let center_star_points = 6;
 
 // Wallpaper setup function
 function setup_wallpaper(pWallpaper) {
-  pWallpaper.output_mode(GRID_WALLPAPER);
+  pWallpaper.output_mode(DEVELOP_GLYPH);
   pWallpaper.resolution(FIT_TO_SCREEN);
   pWallpaper.show_guide(false);
   pWallpaper.grid_settings.cell_width = 200;
@@ -72,7 +72,7 @@ function setup_wallpaper(pWallpaper) {
 }
 
 function wallpaper_background() {
-  background(255, 245, 250);
+  background(230, 240, 250);
 }
 
 function my_symbol() {
