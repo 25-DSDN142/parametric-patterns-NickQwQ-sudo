@@ -22,8 +22,8 @@ let layer6_heightBottom = 1.4;
 
 // Layer 5 - Dark Purple and Black
 let layer5_count = 24;
-let layer5_color1 = "#330066";
-let layer5_color2 = "#000000";
+let layer5_color1 = "#ccff00";
+let layer5_color2 = "#339900";
 let layer5_widthFactor = 0.2;
 let layer5_heightTop = 0.4;
 let layer5_heightMid = 1.0;
@@ -43,27 +43,27 @@ let layer3_count = 12;
 let layer3_color1 = "#ff77ff";
 let layer3_color2 = "#5522aa";
 let layer3_widthFactor = 0.1;
-let layer3_heightTop = 0.2;
-let layer3_heightMid = 0.5;
+let layer3_heightTop = 0.1;
+let layer3_heightMid = 0.35;
 let layer3_heightBottom = 0.7;
 
 // Layer 2 - Pink and yellow
-let layer2_count = 18;
-let layer2_color1 = "#ff99aa";
-let layer2_color2 = "#ffcc33";
+let layer2_count = 30;
+let layer2_color1 = "#00ccff";
+let layer2_color2 = "#3366ff";
 let layer2_widthFactor = 0.07;
 let layer2_heightTop = 0.1;
 let layer2_heightMid = 0.3;
 let layer2_heightBottom = 0.5;
 
 // Middle Star
-let center_star_radius1 = 0.1;
-let center_star_radius2 = 0.2;
-let center_star_points = 5;
+let center_star_radius1 = 0.08;
+let center_star_radius2 = 0.15;
+let center_star_points = 7;
 
 // Wallpaper setup function
 function setup_wallpaper(pWallpaper) {
-  pWallpaper.output_mode(GRID_WALLPAPER);
+  pWallpaper.output_mode(DEVELOP_GLYPH);
   pWallpaper.resolution(FIT_TO_SCREEN);
   pWallpaper.show_guide(false);
   pWallpaper.grid_settings.cell_width = 200;
@@ -72,7 +72,7 @@ function setup_wallpaper(pWallpaper) {
 }
 
 function wallpaper_background() {
-  background(255, 255, 220);
+  background(245, 235, 255);
 }
 
 function my_symbol() {
