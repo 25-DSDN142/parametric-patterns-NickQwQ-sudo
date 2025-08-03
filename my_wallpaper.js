@@ -3,9 +3,9 @@ let rect_width = 100;
 let rect_height = 100;
 
 // Layer 7 - Orange and Red
-let layer7_count = 42; // Number of petals
-let layer7_color1 = "#aacc66"; // Gradient start color
-let layer7_color2 = "#fffacd"; // Gradient end color
+let layer7_count = 40; // Number of petals
+let layer7_color1 = "#001f4d"; // Gradient start color
+let layer7_color2 = "#003366"; // Gradient end color
 let layer7_widthFactor = 0.24; // Top peak height multiplier
 let layer7_heightTop = 0.7; // Middle control point
 let layer7_heightMid = 1.3; // Bottom control point
@@ -22,8 +22,8 @@ let layer6_heightBottom = 1.2;
 
 // Layer 5 - Dark Purple and Black
 let layer5_count = 24;
-let layer5_color1 = "#99cc99";
-let layer5_color2 = "#fffff0";
+let layer5_color1 = "#330066";
+let layer5_color2 = "#000000";
 let layer5_widthFactor = 0.2;
 let layer5_heightTop = 0.4;
 let layer5_heightMid = 1.0;
@@ -31,8 +31,8 @@ let layer5_heightBottom = 1.3;
 
 // Layer 4 - Cyan and Pink
 let layer4_count = 8;
-let layer4_color1 = "#330033";
-let layer4_color2 = "#ffffff";
+let layer4_color1 = "#cc99ff";
+let layer4_color2 = "#ddddff";
 let layer4_widthFactor = 0.15;
 let layer4_heightTop = 0.2;
 let layer4_heightMid = 0.5;
@@ -49,21 +49,21 @@ let layer3_heightBottom = 1.0;
 
 // Layer 2 - Pink and yellow
 let layer2_count = 20;
-let layer2_color1 = "#ff6600";
-let layer2_color2 = "#ff99cc";
+let layer2_color1 = "#eebbee";
+let layer2_color2 = "#6699aa";
 let layer2_widthFactor = 0.07;
 let layer2_heightTop = 0.1;
 let layer2_heightMid = 0.3;
 let layer2_heightBottom = 0.5;
 
 // Middle Star
-let center_star_radius1 = 0.1;
+let center_star_radius1 = 0.08;
 let center_star_radius2 = 0.2;
-let center_star_points = 5;
+let center_star_points = 6;
 
 // Wallpaper setup function
 function setup_wallpaper(pWallpaper) {
-  pWallpaper.output_mode(GRID_WALLPAPER);
+  pWallpaper.output_mode(DEVELOP_GLYPH);
   pWallpaper.resolution(FIT_TO_SCREEN);
   pWallpaper.show_guide(false);
   pWallpaper.grid_settings.cell_width = 200;
@@ -72,7 +72,7 @@ function setup_wallpaper(pWallpaper) {
 }
 
 function wallpaper_background() {
-  background(255, 250, 230);
+  background(10, 10, 30);
 }
 
 function my_symbol() {
