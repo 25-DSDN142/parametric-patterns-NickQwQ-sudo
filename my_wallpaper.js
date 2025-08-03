@@ -1,210 +1,146 @@
-//your parameter variables go here!
-let rect_width  = 100;
+// Parameters
+let rect_width = 100;
 let rect_height = 100;
 
-    
+// Layer 7 - Orange and Red
+let layer7_count = 36; // Number of petals
+let layer7_color1 = "#ff9933"; // Gradient start color
+let layer7_color2 = "#cc3300"; // Gradient end color
+let layer7_widthFactor = 0.18; // Top peak height multiplier
+let layer7_heightTop = 0.7; // Middle control point
+let layer7_heightMid = 1.3; // Bottom control point
+let layer7_heightBottom = 1.65; // Width factor
 
+// Layer 6 - Red and Dark Red
+let layer6_count = 30;
+let layer6_color1 = "#ff6666";
+let layer6_color2 = "#990000";
+let layer6_widthFactor = 0.15;
+let layer6_heightTop = 0.6;
+let layer6_heightMid = 1.1;
+let layer6_heightBottom = 1.4;
 
+// Layer 5 - Dark Purple and Black
+let layer5_count = 24;
+let layer5_color1 = "#330066";
+let layer5_color2 = "#000000";
+let layer5_widthFactor = 0.2;
+let layer5_heightTop = 0.4;
+let layer5_heightMid = 1.0;
+let layer5_heightBottom = 1.2;
+
+// Layer 4 - Cyan and Pink
+let layer4_count = 12;
+let layer4_color1 = "#00ffff";
+let layer4_color2 = "#ff00ff";
+let layer4_widthFactor = 0.15;
+let layer4_heightTop = 0.3;
+let layer4_heightMid = 0.7;
+let layer4_heightBottom = 1.0;
+
+// Layer 3 - Purple and Dark Purple
+let layer3_count = 12;
+let layer3_color1 = "#ff77ff";
+let layer3_color2 = "#5522aa";
+let layer3_widthFactor = 0.1;
+let layer3_heightTop = 0.2;
+let layer3_heightMid = 0.5;
+let layer3_heightBottom = 0.7;
+
+// Layer 2 - Pink and yellow
+let layer2_count = 18;
+let layer2_color1 = "#ff99aa";
+let layer2_color2 = "#ffcc33";
+let layer2_widthFactor = 0.07;
+let layer2_heightTop = 0.1;
+let layer2_heightMid = 0.3;
+let layer2_heightBottom = 0.5;
+
+// Middle Star
+let center_star_radius1 = 0.1;
+let center_star_radius2 = 0.2;
+let center_star_points = 5;
+
+// Wallpaper setup function
 function setup_wallpaper(pWallpaper) {
   pWallpaper.output_mode(DEVELOP_GLYPH);
-  //pWallpaper.output_mode(GRID_WALLPAPER);
-  
   pWallpaper.resolution(FIT_TO_SCREEN);
-  pWallpaper.show_guide(true); //set this to false when you're ready to print
-
-  //Grid settings
-  pWallpaper.grid_settings.cell_width  = 200;
-  pWallpaper.grid_settings.cell_height = 200;
-  pWallpaper.grid_settings.row_offset  = 50;
-}
-
-function wallpaper_background() {
-  background(240, 255, 240); //light honeydew green colour
-}
-
-function my_symbol() { // do not rename this function. Treat this similarly to a Draw function
- translate(rect_width / 2, rect_height / 2);
-
-}
-
-
-
-function setup_wallpaper(pWallpaper) {
-  pWallpaper.output_mode(DEVELOP_GLYPH);
-  // pWallpaper.output_mode(GRID_WALLPAPER);
-
-  pWallpaper.resolution(FIT_TO_SCREEN);
-  pWallpaper.show_guide(true); // set to false when you're ready to print
-
-  // Grid settings
+  pWallpaper.show_guide(true);
   pWallpaper.grid_settings.cell_width = 200;
   pWallpaper.grid_settings.cell_height = 200;
   pWallpaper.grid_settings.row_offset = 0;
 }
 
 function wallpaper_background() {
-  background(240, 255, 240); // light honeydew green
+  background(240, 255, 240);
 }
 
-function my_symbol() { 
-  translate(100, 100); 
-  drawFlower(0, 0, 60, 12, color("#00ffff"), color("#ff00ff")); 
+function my_symbol() {
+  
+  translate(200 / 2, 200 / 2);
+  drawFlower(0, 0, 60);
 }
 
-
-
-
-function drawFlower(x, y, size, petals, color1, color2) {
+// Draw each layer of the flower
+function drawFlower(x, y, size) {
   push();
   translate(x, y);
   noStroke();
 
-   // 7
-  for (let i = 0; i < 36; i++) {
-    let angle = (360 / 36) * i;
-    push();
-    rotate(angle);
+  drawLayer(layer7_count, size, layer7_widthFactor, layer7_heightTop, layer7_heightMid, layer7_heightBottom, layer7_color1, layer7_color2);
+  drawLayer(layer6_count, size, layer6_widthFactor, layer6_heightTop, layer6_heightMid, layer6_heightBottom, layer6_color1, layer6_color2);
+  drawLayer(layer5_count, size, layer5_widthFactor, layer5_heightTop, layer5_heightMid, layer5_heightBottom, layer5_color1, layer5_color2);
+  drawLayer(layer4_count, size, layer4_widthFactor, layer4_heightTop, layer4_heightMid, layer4_heightBottom, layer4_color1, layer4_color2, true);
+  drawLayer(layer3_count, size, layer3_widthFactor, layer3_heightTop, layer3_heightMid, layer3_heightBottom, layer3_color1, layer3_color2);
+  drawLayer(layer2_count, size, layer2_widthFactor, layer2_heightTop, layer2_heightMid, layer2_heightBottom, layer2_color1, layer2_color2);
 
-    let grad7 = drawingContext.createLinearGradient(0, -size * 1.3, 0, size * 0.3);
-    grad7.addColorStop(0, color("#ff9933").toString());  
-    grad7.addColorStop(1, color("#cc3300").toString());  
-    drawingContext.fillStyle = grad7;
-
-    beginShape();
-    vertex(0, 0);
-    bezierVertex(-size * 0.18, -size * 0.7, -size * 0.18, -size * 1.3, 0, -size * 1.65);
-    bezierVertex(size * 0.18, -size * 1.3, size * 0.18, -size * 0.7, 0, 0);
-    endShape(CLOSE);
-
-    pop();
-  }
-
-  
-  // 6 
-  for (let i = 0; i < 30; i++) {
-    let angle = (360 / 30) * i;
-    push();
-    rotate(angle);
-
-    let grad6 = drawingContext.createLinearGradient(0, -size * 1.2, 0, size * 0.3);
-    grad6.addColorStop(0, color("#ff6666").toString());  
-    grad6.addColorStop(1, color("#990000").toString());  
-    drawingContext.fillStyle = grad6;
-
-
-    beginShape();
-    vertex(0, 0);
-    bezierVertex(-size * 0.15, -size * 0.6, -size * 0.15, -size * 1.1, 0, -size * 1.4);
-    bezierVertex(size * 0.15, -size * 1.1, size * 0.15, -size * 0.6, 0, 0);
-    endShape(CLOSE);
-
-    pop();
-  }
-
-  // 5
-  for (let i = 0; i < 24; i++) {
-    let angle = (360 / 24) * i;
-    push();
-    rotate(angle);
-
-    let grad0 = drawingContext.createLinearGradient(0, -size * 0.9, 0, size * 0.2);
-    grad0.addColorStop(0, color("#330066").toString()); 
-    grad0.addColorStop(1, color("#000000").toString()); 
-    drawingContext.fillStyle = grad0;
-
-    beginShape();
-    vertex(0, 0);
-    bezierVertex(-size * 0.2, -size * 0.4, -size * 0.2, -size * 1.0, 0, -size * 1.2);
-    bezierVertex(size * 0.2, -size * 1.0, size * 0.2, -size * 0.4, 0, 0);
-    endShape(CLOSE);
-
-    pop();
-  }
-
-
-  //4
-  for (let i = 0; i < petals; i++) {
-    let angle = (360 / petals) * i;
-    push();
-    rotate(angle);
-
-    let grad1 = drawingContext.createLinearGradient(0, -size * 0.6, 0, size * 0.1);
-    grad1.addColorStop(0, color1.toString());
-    grad1.addColorStop(1, color2.toString());
-    drawingContext.fillStyle = grad1;
-
-    beginShape();
-    vertex(0, 0);
-    bezierVertex(-size * 0.15, -size * 0.3, -size * 0.15, -size * 0.7, 0, -size);
-    bezierVertex(size * 0.15, -size * 0.7, size * 0.15, -size * 0.3, 0, 0);
-    endShape(CLOSE);
-
-    
-    stroke(255, 80);
-    strokeWeight(1);
-    line(0, -size * 0.8, 0, -size * 1.05);
-    line(-size * 0.05, -size * 0.9, size * 0.05, -size * 0.9);
-    noStroke();
-    pop();
-  }
-
-  // 3
-  for (let i = 0; i < petals; i++) {
-    let angle = (360 / petals) * i + 360 / (petals * 2);
-    push();
-    rotate(angle);
-
-    let grad2 = drawingContext.createLinearGradient(0, -size * 0.5, 0, size * 0.1);
-    grad2.addColorStop(0, color("#ff77ff").toString());
-    grad2.addColorStop(1, color("#5522aa").toString());
-    drawingContext.fillStyle = grad2;
-
-    beginShape();
-    vertex(0, 0);
-    bezierVertex(-size * 0.1, -size * 0.2, -size * 0.1, -size * 0.5, 0, -size * 0.7);
-    bezierVertex(size * 0.1, -size * 0.5, size * 0.1, -size * 0.2, 0, 0);
-    endShape(CLOSE);
-    pop();
-  }
-
-  // 2
-  for (let i = 0; i < petals + 6; i++) {
-    let angle = (360 / (petals + 6)) * i;
-    push();
-    rotate(angle);
-
-    let grad3 = drawingContext.createLinearGradient(0, -size * 0.4, 0, size * 0.05);
-    grad3.addColorStop(0, color("#ff99aa").toString()); 
-    grad3.addColorStop(1, color("#ffcc33").toString());
-    drawingContext.fillStyle = grad3;
-
-    beginShape();
-    vertex(0, 0);
-    bezierVertex(-size * 0.07, -size * 0.1, -size * 0.07, -size * 0.3, 0, -size * 0.5);
-    bezierVertex(size * 0.07, -size * 0.3, size * 0.07, -size * 0.1, 0, 0);
-    endShape(CLOSE);
-    pop();
-  }
-
-  
-// Middle Star
-let starRadius1 = size * 0.1;
-let starRadius2 = size * 0.2;
-let points = 5;
-
-fill(lerpColor(color1, color2, 0.5));
-noStroke();
-beginShape();
-for (let i = 0; i < points * 2; i++) {
-  let angle = i * 360 / (points * 2);
-  let r = (i % 2 === 0) ? starRadius2 : starRadius1;
-  let x = cos(angle) * r;
-  let y = sin(angle) * r;
-  vertex(x, y);
-}
-endShape(CLOSE);
-
-
+  drawStar(0, 0, size * center_star_radius1, size * center_star_radius2, center_star_points,
+           lerpColor(color(layer4_color1), color(layer4_color2), 0.5));
 
   pop();
+}
+
+// Draw a single layer of petals
+function drawLayer(count, size, widthFactor, heightTop, heightMid, heightBottom, col1, col2, withDecor = false) {
+  for (let i = 0; i < count; i++) {
+    let angle = (360 / count) * i;
+    push();
+    rotate(angle);
+
+    let grad = drawingContext.createLinearGradient(0, -size * heightMid, 0, size * 0.3);
+    grad.addColorStop(0, color(col1).toString());
+    grad.addColorStop(1, color(col2).toString());
+    drawingContext.fillStyle = grad;
+
+    beginShape();
+    vertex(0, 0);
+    bezierVertex(-size * widthFactor, -size * heightTop, -size * widthFactor, -size * heightMid, 0, -size * heightBottom);
+    bezierVertex(size * widthFactor, -size * heightMid, size * widthFactor, -size * heightTop, 0, 0);
+    endShape(CLOSE);
+
+    if (withDecor) {
+      stroke(255, 80);
+      strokeWeight(1);
+      line(0, -size * 0.8, 0, -size * 1.05);
+      line(-size * 0.05, -size * 0.9, size * 0.05, -size * 0.9);
+      noStroke();
+    }
+
+    pop();
+  }
+}
+
+// Center pattern
+function drawStar(x, y, r1, r2, npoints, fillCol) {
+  fill(fillCol);
+  noStroke();
+  beginShape();
+  for (let i = 0; i < npoints * 2; i++) {
+    let angle = i * 360 / (npoints * 2);
+    let r = (i % 2 === 0) ? r2 : r1;
+    let sx = cos(angle) * r;
+    let sy = sin(angle) * r;
+    vertex(sx, sy);
+  }
+  endShape(CLOSE);
 }
