@@ -3,9 +3,9 @@ let rect_width = 100;
 let rect_height = 100;
 
 // Layer 7 - Orange and Red
-let layer7_count = 28; // Number of petals
-let layer7_color1 = "#ff9933"; // Gradient start color
-let layer7_color2 = "#cc3300"; // Gradient end color
+let layer7_count = 24; // Number of petals
+let layer7_color1 = "#ffc9a9"; // Gradient start color
+let layer7_color2 = "#ff9966"; // Gradient end color
 let layer7_widthFactor = 0.24; // Top peak height multiplier
 let layer7_heightTop = 0.7; // Middle control point
 let layer7_heightMid = 1.3; // Bottom control point
@@ -13,8 +13,8 @@ let layer7_heightBottom = 1.65; // Width factor
 
 // Layer 6 - Red and Dark Red
 let layer6_count = 30;
-let layer6_color1 = "#33cccc";
-let layer6_color2 = "#006699";
+let layer6_color1 = "#d1a3ff";
+let layer6_color2 = "#a3dfff";
 let layer6_widthFactor = 0.15;
 let layer6_heightTop = 0.6;
 let layer6_heightMid = 1.1;
@@ -30,13 +30,13 @@ let layer5_heightMid = 1.0;
 let layer5_heightBottom = 1.2;
 
 // Layer 4 - Cyan and Pink
-let layer4_count = 14;
+let layer4_count = 8;
 let layer4_color1 = "#00ffff";
 let layer4_color2 = "#ff00ff";
 let layer4_widthFactor = 0.15;
-let layer4_heightTop = 0.3;
-let layer4_heightMid = 0.7;
-let layer4_heightBottom = 1.0;
+let layer4_heightTop = 0.2;
+let layer4_heightMid = 0.5;
+let layer4_heightBottom = 0.9;
 
 // Layer 3 - Purple and Dark Purple
 let layer3_count = 12;
@@ -49,21 +49,21 @@ let layer3_heightBottom = 0.7;
 
 // Layer 2 - Pink and yellow
 let layer2_count = 30;
-let layer2_color1 = "#00ccff";
-let layer2_color2 = "#3366ff";
+let layer2_color1 = "#aaffee";
+let layer2_color2 = "#3399ff";
 let layer2_widthFactor = 0.07;
 let layer2_heightTop = 0.1;
 let layer2_heightMid = 0.3;
 let layer2_heightBottom = 0.5;
 
 // Middle Star
-let center_star_radius1 = 0.08;
-let center_star_radius2 = 0.15;
-let center_star_points = 7;
+let center_star_radius1 = 0.09;
+let center_star_radius2 = 0.16;
+let center_star_points = 6;
 
 // Wallpaper setup function
 function setup_wallpaper(pWallpaper) {
-  pWallpaper.output_mode(GRID_WALLPAPER);
+  pWallpaper.output_mode(DEVELOP_GLYPH);
   pWallpaper.resolution(FIT_TO_SCREEN);
   pWallpaper.show_guide(false);
   pWallpaper.grid_settings.cell_width = 200;
@@ -72,7 +72,7 @@ function setup_wallpaper(pWallpaper) {
 }
 
 function wallpaper_background() {
-  background(245, 235, 255);
+  background(255, 245, 250);
 }
 
 function my_symbol() {
